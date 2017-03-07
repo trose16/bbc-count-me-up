@@ -1,6 +1,6 @@
 ## User Stories
 
-> • As producers of a popular BBC talent show, so that we may avoid a 2017 Oscar Best Picture "moment" and accurately announce a winner, **we need Count Me Up to be a simple and clear program that receives, distributes, calculates and updates the votes cast for our candidates.**
+> • As producers of a popular BBC talent show, so that we may avoid a 2017 Oscar Best Picture "moment" and have our presenter accurately announce a winner, **we need Count Me Up to be a simple and clear program that receives, distributes, calculates, updates and reports the votes cast for our candidates.**
 
 > As a viewer of a BBC popular live talent show...
 So that the candidate of my choice has a chance of winning,
