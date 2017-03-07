@@ -1,4 +1,4 @@
-decribe('CountMeUp', function() {
+describe('CountMeUp', function() {
 
   var countMeUp;
 
@@ -6,9 +6,9 @@ decribe('CountMeUp', function() {
     countMeUp = new CountMeUp();
   });
 
-  it('should track candidates', function() {
-    expect(countMeUp.candidates).toBe([]);
-  })
+  it('should store a list of candidates', function() {
+    expect(countMeUp.candidates).toEqual([]);
+  });
 
 
 });
