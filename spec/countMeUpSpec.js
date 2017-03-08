@@ -17,6 +17,10 @@ describe('CountMeUp', function() {
     expect(countMeUp.users).toEqual([]) // The next essential component is to track the users that will cast votes.
   });
 
+  it('should add a new user to the list', function() {
+    countMeUp.trackUser(user)
+    expect(countMeUp.users).toContain(user); // User objects need to actually be added to the system and tracked once created.
+  });
 
 
 
