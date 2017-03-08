@@ -4,9 +4,11 @@
 
   function User(name) {
     this.name = name;
+    this.myPicks = [];
   };
 
   User.prototype.castVote = function(candidate) {
+    this.myPicks.push(candidate);
     candidate.receiveVote();
   };
 

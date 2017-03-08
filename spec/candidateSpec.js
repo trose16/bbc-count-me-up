@@ -12,8 +12,13 @@ describe('User', function() {
   })
 
   it('should be able to cast a vote for a candidate', function() {
-    user.castVote(candidate)
+    user.castVote(candidate);
     expect(candidate.receiveVote).toHaveBeenCalled();
+  });
+
+  it('should know who they voted for', function() {
+    user.castVote(candidate);
+    expect(user.myPicks).toContain(candidate);
   });
 
 
