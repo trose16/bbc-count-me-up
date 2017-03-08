@@ -14,6 +14,7 @@ describe('Candidate', function() {
 
   it('should receive votes cast by users', function() {
     user.castVote(candidate);
+    candidate.receiveVote();
     expect(candidate.votes).toEqual(1);
   });
 
