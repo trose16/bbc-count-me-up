@@ -3,7 +3,7 @@
   function CountMeUp() {
     this.candidates = [];
     this.users = [];
-  }
+  };
 
   CountMeUp.prototype.trackUser = function(user) {
     this.users.push(user);

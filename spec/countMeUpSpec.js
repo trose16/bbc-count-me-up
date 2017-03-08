@@ -7,7 +7,7 @@ describe('CountMeUp', function() {
   beforeEach(function() {
     countMeUp = new CountMeUp();
     user = jasmine.createSpyObj('user', ['castVote']);
-    candidate = jasmine.createSpyObj('candidate', ['receivedVotes'])
+    candidate = jasmine.createSpyObj('candidate', ['receivedVotes']);
   }); // Using spyObjects to manage dependancies and separation of concerns.
 
   it('should store a list of candidates', function() {
