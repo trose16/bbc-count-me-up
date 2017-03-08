@@ -1,8 +1,9 @@
-(function(exports) {
+
 
   function CountMeUp() {
     this.candidates = [];
     this.users = [];
+    this.totalVotes = 0;
   };
 
   CountMeUp.prototype.trackUser = function(user) {
@@ -13,7 +14,12 @@
     this.candidates.push(candidate);
   };
 
-
-  exports.CountMeUp = CountMeUp;
-
-})(this);
+  CountMeUp.prototype.trackVotes = function() {
+    var add = [];
+    for( i = 0; i < this.candidates.length; i++ ) {
+      add.push(this.candidates[i].votes)
+    };
+    this.totalVotes = add.reduce(function(a,b) {
+      return a+b;
+    });
+  };
