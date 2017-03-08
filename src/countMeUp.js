@@ -1,4 +1,4 @@
-
+(function(exports) {
 
   function CountMeUp() {
     this.candidates = [];
@@ -22,4 +22,14 @@
     this.totalVotes = add.reduce(function(a,b) {
       return a+b;
     });
+    this.realTime();
   };
+
+  CountMeUp.prototype.realTime = function() {
+    setInterval( function() { this.trackVotes(); }, 500);
+    console.log(this.totalVotes);
+  };
+
+  exports.CountMeUp = CountMeUp;
+
+})(this);
