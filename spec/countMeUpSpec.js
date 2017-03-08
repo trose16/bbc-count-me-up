@@ -7,7 +7,6 @@ describe('CountMeUp', function() {
   beforeEach(function() {
     countMeUp = new CountMeUp();
     user = jasmine.createSpyObj('user', ['castVote']);
-    candidate = jasmine.createSpyObj('candidate')
   });
 
   it('should store a list of candidates', function() {

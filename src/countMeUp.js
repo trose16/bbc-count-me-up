@@ -2,6 +2,7 @@
 
   function CountMeUp() {
     this.candidates = [];
+    this.users = [];
   }
 
 
