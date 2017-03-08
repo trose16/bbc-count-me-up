@@ -6,6 +6,10 @@
     this.name = name;
   };
 
+  User.prototype.castVote = function(candidate) {
+    candidate.receiveVote();
+  };
+
   exports.User = User;
 
 })(this);

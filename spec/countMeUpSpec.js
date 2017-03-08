@@ -7,8 +7,8 @@ describe('CountMeUp', function() {
   beforeEach(function() {
     countMeUp = new CountMeUp();
     user = jasmine.createSpyObj('user', ['castVote']);
-    candidate = jasmine.createSpyObj('candidate', ['receivedVotes']);
-  }); // Using spyObjects to manage dependancies and separation of concerns.
+    candidate = jasmine.createSpyObj('candidate', ['receiveVote']);
+  }); // Using spyObjects to manage dependancies and separation of concerns. beforeEach block keeps the setup of each test easier to read & less cluttered.
 
   it('should store a list of candidates', function() {
     expect(countMeUp.candidates).toEqual([]); // I'm starting here since the program is dependent on having candidates for which to vote.

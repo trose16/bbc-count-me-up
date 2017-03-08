@@ -5,7 +5,7 @@ describe('User', function() {
   beforeEach(function() {
     user = new User('Teako');
     candidate = jasmine.createSpyObj('candidate', ['receiveVote']);
-  })
+  }) // spyObjects manage dependancies and separation of concerns. beforeEach block keeps the setup of each test easier to read & less cluttered.
 
   it('should be initialized with a username for identification', function() {
     expect(user.name).toEqual('Teako');
