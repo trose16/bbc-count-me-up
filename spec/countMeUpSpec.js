@@ -8,8 +8,8 @@ describe('CountMeUp', function() {
   beforeEach(function() {
     countMeUp = new CountMeUp();
     user = jasmine.createSpyObj('user', ['castVote']);
-    candidate = jasmine.createSpyObj('candidate', ['receiveVote', 'votes']);
-    candidate2 = jasmine.createSpyObj('candidate2', ['receiveVote', 'votes']);
+    candidate = jasmine.createSpyObj('candidate', ['receiveVote', 'votes', 'name']);
+    candidate2 = jasmine.createSpyObj('candidate2', ['receiveVote', 'votes', 'name']);
     realTime = jasmine.createSpy("realTime");
     jasmine.clock().install();
   }); // Using spyObjects to manage dependancies and separation of concerns. beforeEach block keeps the setup of each test easier to read & less cluttered.
@@ -52,12 +52,14 @@ describe('CountMeUp', function() {
   }); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto vote tracking with setInterval.
 
   it('sort candidates by number of votes', function() {
+    candidate.votes = 6;
+    candidate2.votes = 8;
+    candidate.name = 'Gabriel'
+    candidate2.name = 'Dante'
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
-    candidate.votes = 10;
-    candidate2.votes = 8;
     countMeUp.rankCandidates();
-    expect(countMeUp.candidates[0].votes).toEqual(10)
+    expect(countMeUp.candidates[0].votes).toEqual(8)
   });
 
 

@@ -16,6 +16,13 @@
 
   CountMeUp.prototype.trackVotes = function() {
     this.totalVotes++;
+    this.rankCandidates;
+  };
+
+  CountMeUp.prototype.rankCandidates = function() {
+    this.candidates.sort(function(a, b) {
+    return a.votes + b.votes;
+    })
   };
 
   exports.CountMeUp = CountMeUp;
