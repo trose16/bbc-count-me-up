@@ -25,6 +25,16 @@
     })
   };
 
+  CountMeUp.prototype.votePercentage = function() {
+    var array = this.candidates;
+    var decimal = "0.";
+    for (var i = 0; i < array.length; i++) {
+      toFloat = decimal + array[i].votes.toString();
+      percentage = parseFloat(toFloat) * this.totalVotes;
+      return Number((percentage).toFixed(1));
+    }
+  };
+
   exports.CountMeUp = CountMeUp;
 
 })(this);

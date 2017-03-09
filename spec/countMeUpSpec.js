@@ -66,11 +66,11 @@ describe('CountMeUp', function() {
     countMeUp.totalVotes = 90;
     candidate.votes = 35;
     candidate2.votes = 55;
-    candidate.name = 'Gabriel'
-    candidate2.name = 'Dante'
+    candidate.name = 'Gabriel';
+    candidate2.name = 'Dante';
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
-    expect(countMeUp.candidates[0].votePercentage).toEqual(31.5)
+    expect(countMeUp.votePercentage()).toEqual(31.5)
   });
 
 
