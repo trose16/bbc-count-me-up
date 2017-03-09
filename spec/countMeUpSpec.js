@@ -51,7 +51,7 @@ describe('CountMeUp', function() {
     expect( realTime.calls.count() ).toEqual(3);
   }); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto vote tracking with setInterval.
 
-  it('sort candidates by number of votes', function() {
+  it('ranks candidates by number of votes', function() {
     candidate.votes = 6;
     candidate2.votes = 8;
     candidate.name = 'Gabriel'
@@ -60,6 +60,17 @@ describe('CountMeUp', function() {
     countMeUp.trackCandidate(candidate2);
     countMeUp.rankCandidates();
     expect(countMeUp.candidates[0].votes).toEqual(8)
+  });
+
+  it('reports the candidates percentage of total votes', function() {
+    countMeUp.totalVotes = 90;
+    candidate.votes = 35;
+    candidate2.votes = 55;
+    candidate.name = 'Gabriel'
+    candidate2.name = 'Dante'
+    countMeUp.trackCandidate(candidate);
+    countMeUp.trackCandidate(candidate2);
+    expect(countMeUp.candidates[0].votePercentage).toEqual(31.5)
   });
 
 
