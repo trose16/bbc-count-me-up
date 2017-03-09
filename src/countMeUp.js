@@ -25,14 +25,14 @@
     })
   };
 
-  CountMeUp.prototype.votePercentage = function() {
+  CountMeUp.prototype.calcPercentage = function() {
     var array = this.candidates;
-    var decimal = "0.";
+    var report = [];
     for (var i = 0; i < array.length; i++) {
-      toFloat = decimal + array[i].votes.toString();
-      percentage = parseFloat(toFloat) * this.totalVotes;
-      return Number((percentage).toFixed(1));
+      percentage = array[i].votes / this.totalVotes * 100 ;
+      report.push(array[i].name + " " + Number((percentage).toFixed(1)) + "%" )
     }
+    return report;
   };
 
   exports.CountMeUp = CountMeUp;
