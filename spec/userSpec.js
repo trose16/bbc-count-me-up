@@ -6,6 +6,7 @@ describe('User', function() {
   beforeEach(function() {
     user = new User('Teako');
     candidate = jasmine.createSpyObj('candidate', ['receiveVote']);
+    countMeUp = jasmine.createSpyObj('countMeUp', ['trackVotes'])
   }); // spyObjects manage dependancies and separation of concerns. beforeEach block keeps the setup of each test easier to read & less cluttered.
 
   it('should be initialized with a username for identification', function() {
@@ -13,13 +14,14 @@ describe('User', function() {
   });
 
   it('should be able to cast a vote for a candidate', function() {
-    user.castVote(candidate);
+    user.castVote(candidate, countMeUp);
     expect(candidate.receiveVote).toHaveBeenCalled();
+    expect(countMeUp.trackVotes).toHaveBeenCalled();
   });
 
   it('should know who they voted for', function() {
-    user.castVote(candidate);
-    expect(user.myPicks).toContain(candidate);
+    user.castVote(candidate, countMeUp);
+    expect(user.myPicks).toContain(candidate, countMeUp);
   });
 
   it('should not be able to vote more than 3 times', function() {

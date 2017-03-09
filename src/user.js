@@ -18,9 +18,9 @@
 
   User.prototype.castVote = function(candidate, countMeUp) {
     if ( this.myPicks.length < 3 ) {
-      this.myPicks.push(candidate);
-      candidate.receiveVote();
-      countMeUp.trackVotes();
+        this.myPicks.push(candidate);
+        candidate.receiveVote();
+        countMeUp.trackVotes();
     } else if ( this.myPicks.length === 3 ) {
         throw new Error("Sorry, you can't vote more than 3 times");
     }
