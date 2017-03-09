@@ -15,22 +15,7 @@
   };
 
   CountMeUp.prototype.trackVotes = function() {
-    var add = [];
-    for( i = 0; i < this.candidates.length; i++ ) {
-      add.push(this.candidates[i].votes)
-    };
-    this.totalVotes = add.reduce(function(a,b) {
-      return a+b;
-    });
-    this.realTime();
-  };
-
-  function testMessage() {
-    alert("realTime tracking has started")
-  };
-
-  CountMeUp.prototype.realTime = function() {
-    setInterval(testMessage, 500); //plan to replace testMessage with trackVotes
+    this.totalVotes++;
   };
 
   exports.CountMeUp = CountMeUp;
