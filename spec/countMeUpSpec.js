@@ -48,7 +48,7 @@ describe('CountMeUp', function() {
     jasmine.clock().tick(1500);
     expect( realTime ).toHaveBeenCalled();
     expect( realTime.calls.count() ).toEqual(3);
-  }); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto invoke vote tracking with setInterval.
+  }); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto vote tracking with setInterval.
 
 
 });

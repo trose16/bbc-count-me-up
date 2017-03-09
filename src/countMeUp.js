@@ -25,9 +25,12 @@
     this.realTime();
   };
 
+  function testMessage() {
+    alert("realTime tracking has started")
+  };
+
   CountMeUp.prototype.realTime = function() {
-    setInterval( function() { this.trackVotes(); }, 500);
-    console.log(this.totalVotes);
+    setInterval(testMessage, 500); //plan to replace testMessage with trackVotes
   };
 
   exports.CountMeUp = CountMeUp;
