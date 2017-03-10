@@ -2,6 +2,7 @@ $(document).ready(function() {
 
   showVotes();
   showCandidate();
+  showVoteButton();
 
 
   $('#track-votes').click(function() {
@@ -11,7 +12,6 @@ $(document).ready(function() {
 
   function showCandidate() {
       $("#candidates").html(convertToHTML());
-    }
   };
 
   function convertToHTML() {
@@ -23,6 +23,10 @@ $(document).ready(function() {
     return html + "</ul>"
   };
 
+  function showVoteButton() {
+    var voteBtn = $("<button>");
+    $("#candidates li").append(voteBtn);
+  }; // target each button to add votes to candidate
 
   function showVotes() {
     $('#total-votes').text(countMeUp.totalVotes);
