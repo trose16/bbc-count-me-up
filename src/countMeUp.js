@@ -25,15 +25,6 @@
     });
   };
 
-
-//   CountMeUp.prototype.rankCandidates = function() {
-//     this.candidates.sort(function(a,b) {
-//     a = a.votes;
-//     b = b.votes;
-//     return a < b ? 1 : (a > b ? -1 : 0);
-// });
-//   }; // works!!!
-
   CountMeUp.prototype.calcPercentage = function() {
     var array = this.candidates;
     var report = [];

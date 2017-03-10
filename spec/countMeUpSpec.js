@@ -55,9 +55,7 @@ describe('CountMeUp', function() {
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
     countMeUp.trackCandidate(candidate3);
-    console.log( countMeUp.candidates);
     countMeUp.rankCandidates();
-    console.log( countMeUp.candidates);
     expect(countMeUp.candidates[0].votes).toEqual(6)
   });
 
@@ -71,12 +69,12 @@ describe('CountMeUp', function() {
 
   it('can display results reporting a winner', function() {
     candidate.votes = 6;
-    candidate2.votes = 8;
     candidate.name = 'Gabriel'
+    candidate2.votes = 8;
     candidate2.name = 'Dante'
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
-    expect(countMeUp.finalResults).toContain('Dante wins!')
+    expect(countMeUp.finalResults()).toContain('Dante wins with 8 votes!')
   });
 
 
