@@ -21,9 +21,18 @@
 
   CountMeUp.prototype.rankCandidates = function() {
     this.candidates.sort(function(a, b) {
-    return a.votes + b.votes;
-    })
+    return b.votes - a.votes;
+    });
   };
+
+
+//   CountMeUp.prototype.rankCandidates = function() {
+//     this.candidates.sort(function(a,b) {
+//     a = a.votes;
+//     b = b.votes;
+//     return a < b ? 1 : (a > b ? -1 : 0);
+// });
+//   }; // works!!!
 
   CountMeUp.prototype.calcPercentage = function() {
     var array = this.candidates;
@@ -35,6 +44,10 @@
     return report;
   };
 
+  CountMeUp.prototype.finalResults = function() {
+    this.rankCandidates();
+    return this.candidates[0].name + " wins with " + this.candidates[0].votes + " votes!" ;
+  };
   exports.CountMeUp = CountMeUp;
 
 })(this);

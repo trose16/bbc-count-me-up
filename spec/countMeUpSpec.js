@@ -10,6 +10,7 @@ describe('CountMeUp', function() {
     user = jasmine.createSpyObj('user', ['castVote']);
     candidate = jasmine.createSpyObj('candidate', ['receiveVote', 'votes', 'name']);
     candidate2 = jasmine.createSpyObj('candidate2', ['receiveVote', 'votes', 'name']);
+    candidate3 = jasmine.createSpyObj('candidate3', ['receiveVote', 'votes', 'name']);
     realTime = jasmine.createSpy("realTime");
     jasmine.clock().install();
   }); // Using spyObjects to manage dependancies and separation of concerns. beforeEach block keeps the setup of each test easier to read & less cluttered.
@@ -44,22 +45,20 @@ describe('CountMeUp', function() {
     expect(countMeUp.totalVotes).toEqual(1);
   }); // writing basic fx to get candidate votes total and report them in one variable.
 
-  it('must calculate votes at or close to real time', function() {
-    setInterval( function(){ realTime(); }, 500);
-    jasmine.clock().tick(1500);
-    expect( realTime ).toHaveBeenCalled();
-    expect( realTime.calls.count() ).toEqual(3);
-  }); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto vote tracking with setInterval.
-
   it('ranks candidates by number of votes', function() {
-    candidate.votes = 6;
-    candidate2.votes = 8;
     candidate.name = 'Gabriel'
+    candidate.votes = 6;
     candidate2.name = 'Dante'
+    candidate2.votes = 3;
+    candidate3.name = 'Blake'
+    candidate3.votes = 4;
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
+    countMeUp.trackCandidate(candidate3);
+    console.log( countMeUp.candidates);
     countMeUp.rankCandidates();
-    expect(countMeUp.candidates[0].votes).toEqual(8)
+    console.log( countMeUp.candidates);
+    expect(countMeUp.candidates[0].votes).toEqual(6)
   });
 
   it('reports the candidates percentage of total votes', function() {
@@ -68,6 +67,16 @@ describe('CountMeUp', function() {
     candidate.name = 'Gabriel';
     countMeUp.trackCandidate(candidate);
     expect(countMeUp.calcPercentage()).toContain("Gabriel 38.9%")
+  });
+
+  it('can display results reporting a winner', function() {
+    candidate.votes = 6;
+    candidate2.votes = 8;
+    candidate.name = 'Gabriel'
+    candidate2.name = 'Dante'
+    countMeUp.trackCandidate(candidate);
+    countMeUp.trackCandidate(candidate2);
+    expect(countMeUp.finalResults).toContain('Dante wins!')
   });
 
 
