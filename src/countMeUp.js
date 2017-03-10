@@ -1,3 +1,5 @@
+
+
 (function(exports) {
 
   function CountMeUp() {
@@ -15,8 +17,7 @@
   };
 
   CountMeUp.prototype.trackVotes = function() {
-    this.totalVotes++;
-    this.rankCandidates;
+    this.totalVotes++; //rank candidates here too...
   };
 
   CountMeUp.prototype.rankCandidates = function() {
@@ -39,6 +40,7 @@
     this.rankCandidates();
     return this.candidates[0].name + " wins with " + this.candidates[0].votes + " votes!" ;
   };
+  
   exports.CountMeUp = CountMeUp;
 
 })(this);
