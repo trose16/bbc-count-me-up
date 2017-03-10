@@ -7,15 +7,6 @@
     this.myPicks = [];
   };
 
-  User.prototype.castVote = function(candidate) {
-    if ( this.myPicks.length < 3 ) {
-        this.myPicks.push(candidate);
-        candidate.receiveVote();
-    } else if ( this.myPicks.length === 3 ) {
-        throw new Error("Sorry, you can't vote more than 3 times");
-    }
-  };
-
   User.prototype.castVote = function(candidate, countMeUp) {
     if ( this.myPicks.length < 3 ) {
         this.myPicks.push(candidate);

@@ -1,15 +1,30 @@
 $(document).ready(function() {
 
-  var countMeUp = new CountMeUp();
-  updateVotes();
+  showVotes();
+  showCandidate();
 
 
   $('#track-votes').click(function() {
-    countMeUp.trackVotes();
+    user.castVote();
     updateVotes();
   })
 
-  function updateVotes() {
+  function showCandidate() {
+      $("#candidates").html(convertToHTML());
+    }
+  };
+
+  function convertToHTML() {
+    var array = countMeUp.candidates;
+    var html = "<ul>";
+    for ( var i = 0; i < array.length; i++ ) {
+      html += `<li>${ array[i].name }</li>`;
+    }
+    return html + "</ul>"
+  };
+
+
+  function showVotes() {
     $('#total-votes').text(countMeUp.totalVotes);
   }
 
