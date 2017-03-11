@@ -55,7 +55,7 @@ describe('CountMeUp', function() {
     countMeUp.trackCandidate(candidate);
     countMeUp.trackCandidate(candidate2);
     countMeUp.trackCandidate(candidate3);
-    countMeUp.rankCandidates();
+    console.log(countMeUp.rankCandidates());
     expect(countMeUp.candidates[0].votes).toEqual(6)
   });
 

@@ -5,6 +5,7 @@ $ brew install node
 >$ cd root/of/your-project/
 $ npm install http-server --save
 $ node node_modules/http-server/bin/http-server
+clear browsing data/cache if not loading properly
 
 
 

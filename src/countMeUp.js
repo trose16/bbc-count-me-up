@@ -25,14 +25,14 @@
     this.candidates.sort(function(a, b) {
     return b.votes - a.votes;
     });
-  };
+  }; // this is automatically called by track votes triggered by castVote in user.js
 
   CountMeUp.prototype.calcPercentage = function() {
     var array = this.candidates;
     var report = [];
     for (var i = 0; i < array.length; i++) {
       percentage = array[i].votes / this.totalVotes * 100 ;
-      report.push(array[i].name + " " + Number((percentage).toFixed(1)) + "%" )
+      report.push(array[i].name + " " + Number((percentage).toFixed(1)) + "% " )
     }
     return report;
   };
