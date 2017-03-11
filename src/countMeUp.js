@@ -17,7 +17,8 @@
   };
 
   CountMeUp.prototype.trackVotes = function() {
-    this.totalVotes++; //rank candidates here too...
+    this.totalVotes++;
+    this.rankCandidates();
   };
 
   CountMeUp.prototype.rankCandidates = function() {
@@ -40,7 +41,7 @@
     this.rankCandidates();
     return this.candidates[0].name + " wins with " + this.candidates[0].votes + " votes!" ;
   };
-  
+
   exports.CountMeUp = CountMeUp;
 
 })(this);
