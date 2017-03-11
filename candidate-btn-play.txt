@@ -1,0 +1,32 @@
+
+//THIS WORKS…
+
+candidates = $('#candidates li'); // searches dom returs array
+nameKey = candidates[0].innerText; // returns name of candidate
+user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp); // castVote now has it’s arguments loaded
+
+
+function findCandidate(nameString, candidateList) {
+    for (var i = 0; i < candidateList.length; i++) {
+        if (candidateList[i].name === nameString) {
+          return candidateList[i];
+        }
+    }
+  };
+
+  function showVotes() {
+    $('#total-votes').text(countMeUp.totalVotes);
+  }
+
+Must happen on click… 
+
+$('#candidates button').click(function() {
+	nameKey = findNameKey();
+    user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp);
+	showVotes(); // Must update the show total votes h1
+  });
+
+
+
+
+

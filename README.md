@@ -1,3 +1,14 @@
+$ node -v
+if node: command not found
+$ brew install node
+
+>$ cd root/of/your-project/
+$ npm install http-server --save
+$ node node_modules/http-server/bin/http-server
+
+
+
+
 ## User Stories
 
 > • As producers of a popular BBC talent show, so that we may avoid a 2017 Oscar Best Picture "moment" and have our presenter accurately announce a winner, **we need Count Me Up to be a simple and clear program that receives, validates, distributes, calculates, updates and reports the votes cast for our candidates.**

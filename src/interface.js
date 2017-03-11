@@ -1,6 +1,5 @@
 // maybe switch to constructor/prototype so I can have a view object loaded in my index.js
 
-
 $(document).ready(function() {
 
   showVotes();
@@ -9,14 +8,10 @@ $(document).ready(function() {
   welcomeUser();
 
 
-  $('#track-votes').click(function() {
-    countMeUp.trackVotes();
-    showVotes();
-  })
-
   $('#candidates button').click(function() {
-    user.castVote(nameKeyFx, countMeUp);
-  }) // I want this to enable a user to vote for a candidate. .innerText has name // take the innerText and search countMeUp candidate array to find the match by name
+    return $('button').siblings();
+    showVotes();
+  });
 
   function getCandidateByNameKey() {
     // I need to know which line item button got clicked.. can add a property to button to ID candidate?
@@ -61,6 +56,20 @@ $(document).ready(function() {
       html += `<li>${ array[i].name }</li>`;
     }
     return html + "</ul>"
+  };
+
+  function findNameKey() {
+  	$('#candidates button').click(function() {
+
+  	})
+  }
+  
+  function findCandidate(nameString, candidateList) {
+    for (var i = 0; i < candidateList.length; i++) {
+        if (candidateList[i].name === nameString) {
+          return candidateList[i];
+        }
+    }
   };
 
 
