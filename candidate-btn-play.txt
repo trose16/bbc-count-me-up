@@ -20,13 +20,77 @@ function findCandidate(nameString, candidateList) {
 
 Must happen on click… 
 
+  $('#candidates button').click(function() {
+  	nameKey = $('#candidates li').children()[0].previousSibling;    	console.log(nameKey);
+      	user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp);
+  	showVotes();
+    });
+
+
+///should work!!!
 $('#candidates button').click(function() {
-	nameKey = findNameKey();
-    user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp);
-	showVotes(); // Must update the show total votes h1
+	var nameKey = (this).previousSibling;
+	console.log(nameKey);
+	var candidateObject = findCandidate(nameKey, countMeUp.candidates);
+	console.log(candidateObject);
+	user.castVote(candidateObject, countMeUp);
+	showVotes();
   });
 
 
 
+  $('#candidates button').click(function() {
+  	nameKey = (this).previousSibling;    	
+	console.log(nameKey);
+	user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp);
+  	showVotes();
+    });
+
+
+li.childNodes // returns array of text[0], button[1]
+
+childNodes
+:
+NodeList[2]
+
+
+Li children
+
+previousSibling
+:
+text
+	data
+:
+"Dante"
+
+
+_________________
+
+
+findBtnSibling = $('#candidates li')
+findBtnSibling.children();
+
+
+$('#candidates li').children()[0].previousSibling;
+"Dante" /// this gets me the buttons sibling text which can be used as a key
+
+How do I get the sibling of the button clicked?
+
+on click find your previousSibling
+_________________
+
+
+
+function findNameKey() {
+    keys = $('#candidates li');
+	names = [];
+    for (var i = 0; i < keys.length; i++) {
+      names.push(keys[i].childNodes[0].data);
+    }
+    return names;
+  };
+undefined
+findNameKey();
+["Dante", "Gabriel", "Blake"]
 
 

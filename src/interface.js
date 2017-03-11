@@ -9,29 +9,57 @@ $(document).ready(function() {
 
 
   $('#candidates button').click(function() {
-    return $('button').siblings();
-    showVotes();
+      var nameKey = (this).previousSibling;
+      console.log(nameKey);
+      var candidateObject = findCandidateObject(nameKey, countMeUp.candidates)
+      console.log(candidateObject);
+      user.castVote(candidateObject, countMeUp);
+      showVotes();
   });
 
-  function getCandidateByNameKey() {
-    // I need to know which line item button got clicked.. can add a property to button to ID candidate?
-    candidates = $('#candidates li'); // returns array
-    candidates[i].innerText; // returns nameKey
-  };
+  $('#get-results').click(function() {
+    showResults();
+  });
 
-  function getFinalResults() {
-    //on click display list sorted by decending votes. Declare a winner.
-  };
+  $('#get-percentage').click(function() {
+    showPercentage();
+  });
+
+  function showResults() {
+      winner = $("<h3>");
+      $('#results').append(winner);
+      $('#results').append("The winner is " + countMeUp.finalResults());
+    };
+
+    function showPercentage() {
+        percent = $("<h3>");
+        $('#percentage').append(percent);
+        $('#percentage').append("Here are the percentages... " + countMeUp.calcPercentage());
+      };
+
+  function nameKey() {
+    $('#candidates button').click(function() {
+      (this).previousSibling;
+      console.log((this).previousSibling);
+    });
+  }
+
+  function findCandidateObject(nameString, candidateList) {
+      for (var i = 0; i < candidateList.length; i++) {
+        if (candidateList[i].name === nameString) {
+        return candidateList[i];
+      }
+    }
+  }; // takes name string and finds matching candidate object, which can be passed to castVote method and tracked
 
   function showCandidateByPercentage() {
-    //a button that populates the sorted list
-    // need to convertToHTML
+    $('#percentage')
   }
 
   function welcomeUser() {
     greet = $("<h3>");
     $("#header").append(greet);
-    $("#header").append("Hi " + user.name);
+    $("#header").append("Hi " + user.name); // this refers to the user I instantiate in index.js
   }
 
   function showCandidate() {
@@ -48,7 +76,6 @@ $(document).ready(function() {
     $('#total-votes').text(countMeUp.totalVotes);
   }
 
-
   function convertToHTML() {
     var array = countMeUp.candidates;
     var html = "<ul>";
@@ -56,20 +83,6 @@ $(document).ready(function() {
       html += `<li>${ array[i].name }</li>`;
     }
     return html + "</ul>"
-  };
-
-  function findNameKey() {
-  	$('#candidates button').click(function() {
-
-  	})
-  }
-  
-  function findCandidate(nameString, candidateList) {
-    for (var i = 0; i < candidateList.length; i++) {
-        if (candidateList[i].name === nameString) {
-          return candidateList[i];
-        }
-    }
   };
 
 
