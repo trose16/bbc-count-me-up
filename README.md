@@ -16,15 +16,15 @@ Set up server to view project on localhost
 
 > $ node node_modules/http-server/bin/http-server
 
->clear data/cache regularly with mystery problems occur or use private browsing
+>clear data/cache regularly when mystery problems occur or use private browsing
 
 TDD unit testing
 >jasmine javascript testing framework
-run SpecRunner.html in browser of choice to see tests
+
+>  run SpecRunner.html in browser of choice to see tests
 
 Manual feature testing (jQuery UI/console)
->For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery.  
-Add/update candidates, change users, and test calculations of votes prepopulated in browser by updating this file.
+>For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery.  Add/update candidates, change users, and test calculations of votes prepopulated in browser by updating this file.
 
 
 
