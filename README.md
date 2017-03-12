@@ -32,7 +32,7 @@ Manual feature testing (jQuery UI/console)
 ## My Process
 I started by taking notes on the specs and choosing technologies. My goal was to TDD clean, legible, single responsibility, semantically named code that can be flexibly updated due to dependency management. From a style aspect I aimed for short functions with consistent whitespace and indentation to feel simple, elegant and enjoyable to read.
 
-Before writing a line of code I imagined the project being used in a real scenario (the Oscar thing seemed to be a fun coincidence). Followed up by developing more user stories based on the brief given and diagrammed a bit on paper. The bolded text indicates where I derived my objects and messages.
+Before writing a line of code I imagined the project being used in a real scenario (the Oscar thing seemed to be a fun coincidence). Followed up by developing more user stories based on the brief given and diagrammed a bit on paper. The bolded text indicates where I derived my objects and messages. I used version control(git) carefully to show train of thought.
 
 Additional user stores
 > As a viewer of a BBC popular live talent show...
