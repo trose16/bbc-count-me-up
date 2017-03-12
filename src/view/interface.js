@@ -37,7 +37,7 @@ $(document).ready(function() {
 
   function showPercentage() {
       $("#percentage").html(percentageToHTML());
-      $("#percentage").prepend("Candidate vote percetage: "); // make sure this works!
+      $("#percentage").prepend("Candidate vote percentage: "); // make sure this works!
   };
 
   function showRank() {
@@ -48,7 +48,7 @@ $(document).ready(function() {
   function showResults() {
       var winner = $("<h3>");
       $('#results').append(winner);
-      $('#results').append("The winner is " + countMeUp.finalResults()
+      $('#results').html("The winner is " + countMeUp.finalResults()
       );
     };
 
@@ -80,7 +80,7 @@ $(document).ready(function() {
     var array = countMeUp.candidates;
     var html = "<ul>";
     for ( var i = 0; i < array.length; i++ ) {
-      html += `<li>${ array[i].name }</li>`;
+      html += `<li>  ${ array[i].name }  </li>`;
     }
     return html + "</ul>"
   };

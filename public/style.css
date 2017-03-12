@@ -1,0 +1,86 @@
+body {
+  background-color: #d8d0c2;
+  font-family: 'Baloo Bhaina', cursive;
+  font-size: 35px;
+  text-align: center;
+  color: #261c14;
+  line-height: 1;
+}
+
+#content-container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#error-message {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid red;
+  color: red;
+}
+
+ul {
+    list-style-type: none;
+    background: #fff;
+    padding: 20px;
+}
+
+ul li {
+  margin: 10px;
+}
+
+h1 {
+  font-family: 'Ropa Sans', sans-serif;
+  font-size: 50px;
+  text-align: center;
+  color: #c51b2e;
+  margin: 25px auto;
+}
+
+h2 {
+  font-family: 'Ropa Sans', sans-serif;
+  font-size: 35px;
+  text-align: center;
+  color: #c51b2e;
+  margin: 50px;
+}
+
+#description {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+h3 {
+  font-family: 'Ropa Sans', sans-serif;
+  text-align: center;
+  font-size: 35px;
+  color: #c51b2e;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #c51b2e;
+  width: 100%;
+  color: #fff;
+  padding: 15px 45px;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+button:hover {
+    background-color: #b51225;
+    color: white;
+    border: 2px solid #fff;
+}
+
+.btn-nav {
+  background-color: #261c14;
+  width: 300px;
+}
+
+.btn-nav:hover {
+  background-color: #2f241a;
+}
