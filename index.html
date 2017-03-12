@@ -6,10 +6,10 @@
 
 <head>
     <script src="jquery.js"></script>
-		<script src="./src/interface.js"></script>
-    <script src="./src/countMeUp.js"></script>
-    <script src="./src/user.js"></script>
-    <script src="./src/candidate.js"></script>
+		<script src="./src/view/interface.js"></script>
+    <script src="./src/models/countMeUp.js"></script>
+    <script src="./src/models/user.js"></script>
+    <script src="./src/models/candidate.js"></script>
 
     <title>Count-Me-Up</title>
 </head>
@@ -19,7 +19,11 @@
      <p id="description">Enables viewers of a popular BBC talent competition to vote for their favourite candidate. </br> Enables television presenter to see vote counts & announce the winner of the competition.</p>
      <h2 id="total-votes">H1</h2>
 
+     <h3 id="greet-user"></h3>
+     <p id="error-message">Error should go here</p>
+
      <div id="candidates">
+
      </div>
 
      <div id="results">
@@ -33,7 +37,6 @@
      <div id="rank">
        <button id="get-rank">Rank</button></br>
      </div>
-
 
      <script src="index.js"></script>
   </body>

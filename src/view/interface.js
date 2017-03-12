@@ -8,6 +8,16 @@ $(document).ready(function() {
   showCandidate();
   showCandidateVoteButton();
 
+  // hard coded test of candidate vote button sequence...
+  $('#candidates button').click(function() {
+      try {
+        user.castVote(candidate4, countMeUp);
+        showTotalVotes();
+      }
+      catch(err) {
+        showError();
+      }
+  });
 
   $('#get-percentage').click(function() {
       showPercentage();
@@ -20,6 +30,10 @@ $(document).ready(function() {
   $('#get-results').click(function() {
       showResults();
   });
+
+  function showError() {
+      $("#error-message").html("I'm sorry " + user.name + " you may only vote 3 times.");
+  };
 
   function showPercentage() {
       $("#percentage").html(percentageToHTML());
@@ -39,9 +53,9 @@ $(document).ready(function() {
     };
 
   function welcomeUser() {
-    greet = $("<h3>");
-    $("#header").append(greet);
-    $("#header").append("Hi " + user.name);
+    var greet = $("<h3>");
+    $("#greet-user").append(greet);
+    $("#greet-user").append("Welcome " + user.name + "!");
   }
 
   function showCandidate() {
@@ -52,6 +66,7 @@ $(document).ready(function() {
   function showCandidateVoteButton() {
     var voteBtn = $("<button>");
     $("#candidates li").append(voteBtn);
+    $("#candidates button").html('Vote For Me!');
   }; // target each button to add votes to candidate
 
   function showTotalVotes() {
@@ -95,20 +110,14 @@ $(document).ready(function() {
 
 
 // This seems like it should be working since it does if it's done bit by bit in console. However as one function it doesn't do something right: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)"
-    $('#candidates button').click(function() {
-        var nameKey = (this).previousSibling;
-        return nameKey;
-        console.log(nameKey);
-        var candidateObject = findCandidateObject(nameKey, countMeUp.candidates);
-        return candidateObject;
-        console.log(candidateObject);
-        user.castVote(candidateObject, countMeUp);
-        showTotalVotes();
-      });
-
-// just doing a manual test to make sure this doesn't throw error
     // $('#candidates button').click(function() {
-    //     user.castVote(candidate, countMeUp);
+    //     var nameKey = (this).previousSibling;
+    //     return nameKey;
+    //     console.log(nameKey);
+    //     var candidateObject = findCandidateObject(nameKey, countMeUp.candidates);
+    //     return candidateObject;
+    //     console.log(candidateObject);
+    //     user.castVote(candidateObject, countMeUp);
     //     showTotalVotes();
     //   });
 
