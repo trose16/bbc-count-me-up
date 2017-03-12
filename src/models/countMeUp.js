@@ -1,4 +1,4 @@
-
+// business logic for the bulk of the project is handled by the Count Me Up 'class'. I worked to keep all methods clear SRP and used dependency injection to keep in line with single responsibility.
 
 (function(exports) {
 
@@ -10,22 +10,22 @@
 
   CountMeUp.prototype.trackUser = function(user) {
     this.users.push(user);
-  };
+  }; // a user is created and then listed in the system
 
   CountMeUp.prototype.trackCandidate = function(candidate) {
     this.candidates.push(candidate);
-  };
+  }; // a candidate is created and then listed in the system
 
   CountMeUp.prototype.trackVotes = function() {
     this.totalVotes++;
-    this.rankCandidates();
+    this.rankCandidates(); // triggered by user.castVote. Will not trigger if user votes > 3
   };
 
   CountMeUp.prototype.rankCandidates = function() {
     this.candidates.sort(function(a, b) {
     return b.votes - a.votes;
     });
-  }; // this is automatically called by track votes triggered by castVote in user.js
+  };
 
   CountMeUp.prototype.calcPercentage = function() {
     var array = this.candidates;

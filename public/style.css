@@ -1,22 +1,12 @@
+/* basic css styling so I can demonstrate development process but ideally would have better layout and design to be sure :) */
+
 body {
   background-color: #d8d0c2;
   font-family: 'Baloo Bhaina', cursive;
-  font-size: 35px;
+  font-size: 30px;
   text-align: center;
   color: #261c14;
   line-height: 1;
-}
-
-#content-container {
-  width: 700px;
-  margin: 0 auto;
-}
-
-#error-message {
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
-  border: 1px solid red;
-  color: red;
 }
 
 ul {
@@ -26,15 +16,27 @@ ul {
 }
 
 ul li {
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
-h1 {
+#app {
   font-family: 'Ropa Sans', sans-serif;
-  font-size: 50px;
+  font-size: 70px;
   text-align: center;
   color: #c51b2e;
   margin: 25px auto;
+}
+
+#nav {
+  background: #d8d0c2;
+  padding: 0px;
+  margin: 0px auto 10px auto;
+  width: 700px;
+}
+
+#nav li {
+  float: left;
+  margin-left: 30px;
 }
 
 h2 {
@@ -43,11 +45,6 @@ h2 {
   text-align: center;
   color: #c51b2e;
   margin: 50px;
-}
-
-#description {
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
 }
 
 h3 {
@@ -78,9 +75,32 @@ button:hover {
 
 .btn-nav {
   background-color: #261c14;
-  width: 300px;
+  width: 200px;
 }
 
 .btn-nav:hover {
   background-color: #2f241a;
+}
+
+
+#content-container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#error-message {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid red;
+  color: red;
+}
+
+#description {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+#results {
+  width: 700px;
+  padding: 10px;
 }

@@ -1,3 +1,8 @@
+Scratch notes to myself problem solving the vote buttons. 
+I'd normally throw this away...
+
+
+
   return for (var i = 0; i < this.candidates.length; i++) {
       this.candidates[i].name + this.candidates[i].votes;
     }
@@ -16,7 +21,7 @@ li.childNodes // returns array of text[0], button[1]
 user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp); // castVote now has it’s arguments loaded
 
 
-
+/* basic css styling so I can demonstrate development process but could better layout and design to be sure :) */
 
 
 
@@ -83,7 +88,7 @@ $(‘ul’)
 
 
 
-Must happen on click… 
+Must happen on click…
 
   $('#candidates button').click(function() {
   	nameKey = $('#candidates li').children()[0].previousSibling;    	console.log(nameKey);
@@ -105,7 +110,7 @@ $('#candidates button').click(function() {
 
 
   $('#candidates button').click(function() {
-  	nameKey = (this).previousSibling;    	
+  	nameKey = (this).previousSibling;
 	console.log(nameKey);
 	user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp);
   	showVotes();
@@ -157,5 +162,3 @@ function findNameKey() {
 undefined
 findNameKey();
 ["Dante", "Gabriel", "Blake"]
-
-

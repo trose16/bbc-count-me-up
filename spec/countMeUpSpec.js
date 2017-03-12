@@ -1,3 +1,5 @@
+// TDD tests for main program model
+
 describe('CountMeUp', function() {
 
   var countMeUp;
@@ -17,7 +19,7 @@ describe('CountMeUp', function() {
 
   afterEach(function() {
     jasmine.clock().uninstall();
-  })
+  }) // In an earlier solution my research on site performance used auto call functions with setInterval. I learned how to test this type of code using jasmine timers and clocks etc.
 
   it('should store a list of candidates', function() {
     expect(countMeUp.candidates).toEqual([]); // I'm starting here since the program is dependent on having candidates for which to vote.
@@ -64,7 +66,7 @@ describe('CountMeUp', function() {
     candidate.votes = 35;
     candidate.name = 'Gabriel';
     countMeUp.trackCandidate(candidate);
-    expect(countMeUp.calcPercentage()).toContain("Gabriel 38.9%")
+    expect(countMeUp.calcPercentage()).toContain('Gabriel 38.9% ')
   });
 
   it('can display results reporting a winner', function() {
@@ -76,6 +78,13 @@ describe('CountMeUp', function() {
     countMeUp.trackCandidate(candidate2);
     expect(countMeUp.finalResults()).toContain('Dante wins with 8 votes!')
   });
+
+  it('Must calculate votes at or close to real time', function() {
+  setInterval( function(){ realTime(); }, 500);
+  jasmine.clock().tick(1500);
+  expect( realTime ).toHaveBeenCalled();
+  expect( realTime.calls.count() ).toEqual(3);
+}); // 1s = 1000ms using spyObject 'realTime' as a mock to test implementation of auto vote tracking with setInterval. Test passes so although I used a different solution I left test in to show thought process and work in regards to unit testing for speed. 
 
 
 });

@@ -1,12 +1,12 @@
-// Sets up some objects for use in testing interface. Can test how jquery.js code dynamically handles presenting these if you chnage it here.
+// Sets up some objects for use in testing interface. Can test how jquery.js code dynamically handles presenting these if you change it here. Go incognito or clear cache if change isn't shown in browser.
 
 countMeUp = new CountMeUp();
 user = new User('Roscoe');
-candidate1 = new Candidate('Dante');
-candidate2 = new Candidate('Gabriel');
-candidate3 = new Candidate('Blake');
-candidate4 = new Candidate('Lucy');
-candidate5 = new Candidate('Jazmine');
+candidate1 = new Candidate('Dante Clark');
+candidate2 = new Candidate('Gabriel Kingston');
+candidate3 = new Candidate('Blake Tholen');
+candidate4 = new Candidate('Lucy Vanwinkle');
+candidate5 = new Candidate('Jazmine Black');
 candidate1.votes = 4000;
 candidate2.votes = 2500;
 candidate3.votes = 2700;

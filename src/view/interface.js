@@ -2,35 +2,37 @@
 
 $(document).ready(function() {
 
-// calling the functions I need upon page load
+// Calling the functions I need upon page load
   welcomeUser();
   showTotalVotes();
   showCandidate();
   showCandidateVoteButton();
 
-  // hard coded test of candidate vote button sequence...
-  $('#candidates button').click(function() {
+
+  $('#candidates button').click(function() { // Hardcoded UI voting buttons to test events triggers
       try {
-        user.castVote(candidate4, countMeUp);
+        user.castVote(candidate4, countMeUp); // Dynamic solution in works at bottom of page
         showTotalVotes();
       }
       catch(err) {
-        showError();
+        showError(); // Displays error thrown when user votes more than 3 times
       }
   });
 
   $('#get-percentage').click(function() {
-      showPercentage();
+      showPercentage(); // Displays list of candidate percentage of votes
   });
 
   $('#get-rank').click(function() {
-      showRank();
+      showRank(); // Displays list of candidate by rank
   });
 
   $('#get-results').click(function() {
-      showResults();
+      showResults(); // Accurately and clearly announces the winner
   });
 
+
+// Function definitions used in the calls above...
   function showError() {
       $("#error-message").html("I'm sorry " + user.name + " you may only vote 3 times.");
   };
@@ -53,9 +55,9 @@ $(document).ready(function() {
     };
 
   function welcomeUser() {
-    var greet = $("<h3>");
-    $("#greet-user").append(greet);
-    $("#greet-user").append("Welcome " + user.name + "!");
+      var greet = $("<h3>");
+      $("#greet-user").append(greet);
+      $("#greet-user").append("Welcome " + user.name + "!");
   }
 
   function showCandidate() {
@@ -64,56 +66,54 @@ $(document).ready(function() {
   };
 
   function showCandidateVoteButton() {
-    var voteBtn = $("<button>");
-    $("#candidates li").append(voteBtn);
-    $("#candidates button").html('Vote For Me!');
+      var voteBtn = $("<button>");
+      $("#candidates li").append(voteBtn);
+      $("#candidates button").html('Vote For Me!');
   }; // target each button to add votes to candidate
 
   function showTotalVotes() {
-    $('#total-votes').html("Total Votes: " + countMeUp.totalVotes);
+      $('#total-votes').html("Total Votes: " + countMeUp.totalVotes);
   }
 
 
-// ↓ These methods convert my objects to html for view
-
+// Function definitions used above to convert objects into html for use in UI view building
   function convertToHTML() {
-    var array = countMeUp.candidates;
-    var html = "<ul>";
-    for ( var i = 0; i < array.length; i++ ) {
-      html += `<li>  ${ array[i].name }  </li>`;
-    }
-    return html + "</ul>"
+      var array = countMeUp.candidates;
+      var html = "<ul>";
+      for ( var i = 0; i < array.length; i++ ) {
+        html += `<li>  ${ array[i].name }  </li>`;
+      }
+      return html + "</ul>"
   };
 
   function rankToHTML() {
-    countMeUp.rankCandidates()
-    var array = countMeUp.candidates;
-    var html = "<ul>";
-    for ( var i = 0; i < array.length; i++ ) {
-      html += `<li>${ array[i].name + ": " + array[i].votes }</li>`;
-    }
-    return html + "</ul>"
+      countMeUp.rankCandidates()
+      var array = countMeUp.candidates;
+      var html = "<ul>";
+      for ( var i = 0; i < array.length; i++ ) {
+        html += `<li>${ array[i].name + ": " + array[i].votes }</li>`;
+      }
+      return html + "</ul>"
   };
 
   function percentageToHTML() {
-    var array = countMeUp.calcPercentage();
-    var html = "<ul>";
-    for ( var i = 0; i < array.length; i++ ) {
-      html += `<li>${ array[i] }</li>`;
-    }
-    return html + "</ul>"
+      var array = countMeUp.calcPercentage();
+      var html = "<ul>";
+      for ( var i = 0; i < array.length; i++ ) {
+        html += `<li>${ array[i] }</li>`;
+      }
+      return html + "</ul>"
   };
 
 
-  // Working on this functionality for voting buttons
+// Notes on voter buttons: Each candidate has a button rendered by jQuery and added to it's line item. On click the button needs to identify its candidate and call the 'user.castVote(candidate, countMeUp)' function, which will update the total votes/candidate votes and throw error if user votes more than 3 times. Researched A LOT, logic seems sound, yet still not working and would love feedback!
 
+// My solution below was for button to find previousSibling, which returns candidate name string. I then pass that name into a search function 'findCandidateObject(nameString, candidateList)' that will search my array of objects to find the right candidate object to return as an argument for my user.castVote fx (works great!). Each bit/fx works when run in manually repl but getting it to dynamically handle in my callback causes: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)" It seems to be that my castVote method remains undefined and is not getting it's candidate object.
 
-
-// This seems like it should be working since it does if it's done bit by bit in console. However as one function it doesn't do something right: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)"
     // $('#candidates button').click(function() {
-    //     var nameKey = (this).previousSibling;
+    //     var nameKey = (this).previousSibling; // exp " Dante Clark "
     //     return nameKey;
-    //     console.log(nameKey);
+    //     console.log(nameKey); // debugging
     //     var candidateObject = findCandidateObject(nameKey, countMeUp.candidates);
     //     return candidateObject;
     //     console.log(candidateObject);
@@ -121,23 +121,14 @@ $(document).ready(function() {
     //     showTotalVotes();
     //   });
 
-// this works to extract the previousSibling (candidates name string) of the button clicked to use as a nameKey that my findCandidateObject can use as a search tool to return the candidate object for button clicked
-      function nameKey() {
-          $('#candidates button').click(function() {
-          (this).previousSibling;
-          console.log((this).previousSibling);
-          });
-      };
 
-
-// takes name string and finds matching candidate object, which can be passed to castVote method and tracked
-    function findCandidateObject(nameString, candidateList) {
-          for (var i = 0; i < candidateList.length; i++)  {
-            if (candidateList[i].name === nameString) {
-          return candidateList[i];
-        }
-      }
-    };
-
+// Basically the reverse of my convertHTML methods. Takes nameKey string to find and return candidate object, used by user.castVote function...
+    // function findCandidateObject(nameString, candidateList) {
+    //       for (var i = 0; i < candidateList.length; i++)  {
+    //         if (candidateList[i].name === nameString) {
+    //       return candidateList[i];
+    //     }
+    //   }
+    // };
 
 })
