@@ -22,15 +22,17 @@ TDD unit testing
 >jasmine javascript testing framework
 run SpecRunner.html in browser of choice to see tests
 
-For feature testing in UI
->For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery .  
+Manual feature testing (jQuery UI/console)
+>For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery.  
 Add/update candidates, change users, and test calculations of votes prepopulated in browser by updating this file.
 
 
 
 
-## All User Stories
-*Bolded text shows where I derived objects and messages from first stage user stories*
+## My Process
+*Before writing a line of code I imagined the project being used in a real scenario (the Oscar thing seemed to be a fun coincidence). Followed up by developing more user stories based on the brief given and diagrammed a bit on paper. The bolded text indicates where I derived my objects and messages*
+
+Additional user stores
 > As a viewer of a BBC popular live talent show...
 So that the candidate of my choice has a chance of winning,
 **I would like to *cast my vote* for a candidate**
