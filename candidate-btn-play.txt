@@ -3,14 +3,40 @@
     }
 
 
-//THIS WORKS…
+//THIS WORKS IN CONSOLE…
+
+To do this dynamically I need to know which button was clicked
 
 candidates = $('#candidates li'); // searches dom returs array
+
 nameKey = candidates[0].innerText; // returns name of candidate
+or
+li.childNodes // returns array of text[0], button[1]
+
 user.castVote(findCandidate(nameKey, countMeUp.candidates), countMeUp); // castVote now has it’s arguments loaded
 
 
-function findCandidate(nameString, candidateList) {
+
+
+
+
+
+//testing manual implementation on click
+
+    $('#candidates button').click(function() {
+	var candidates = $('#candidates li');
+	return candidates;
+        var nameKey = candidates[0].innerText;
+        return nameKey;
+        var candidateObject = findCandidateObject(nameKey, countMeUp.candidates)
+        return candidateObject;
+        user.castVote(candidateObject, countMeUp);
+        showVotes();
+      });
+
+
+
+function findCandidateObject(nameString, candidateList) {
     for (var i = 0; i < candidateList.length; i++) {
         if (candidateList[i].name === nameString) {
           return candidateList[i];
@@ -18,9 +44,44 @@ function findCandidate(nameString, candidateList) {
     }
   };
 
+
   function showVotes() {
     $('#total-votes').text(countMeUp.totalVotes);
   }
+
+
+
+$(document).ready (function (){
+    $('#candidates button').click(function() {
+        user.castVote(candidate, countMeUp);
+        showVotes();
+      });
+});
+
+
+$('#candidates button').click
+
+
+
+    $('#candidates button').click(function() {
+        var nameKey = (this).previousSibling; // returns “Name”
+        var candidateObject = findCandidateObject(nameKey, countMeUp.candidates); // uses string nameKey to find and return the object I must pass as an argument to cast a vote.
+        user.castVote(candidateObject, countMeUp); // parameters I need to define function
+        showTotalVotes(); // update the page
+      });
+
+
+IDEA: put id on unordered list and for each element get the previous sibling name
+
+$(‘ul’)
+	$(‘button’).each(function() {
+		on click
+		get previous sibling
+		use as name key etc.
+	}
+
+
+
 
 Must happen on click… 
 

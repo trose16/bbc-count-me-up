@@ -1,11 +1,13 @@
-// maybe switch to constructor/prototype so I can have a view object loaded in my index.js
+// interface.js is the middle view layer accessing data from backend models to dynamically render frontend index.html page content using jQuery
 
 $(document).ready(function() {
 
-  showVotes();
-  showCandidate();
-  showVoteButton();
+// calling the functions I need upon page load
   welcomeUser();
+  showTotalVotes();
+  showCandidate();
+  showCandidateVoteButton();
+
 
   $('#get-percentage').click(function() {
       showPercentage();
@@ -20,33 +22,14 @@ $(document).ready(function() {
   });
 
   function showPercentage() {
-      var percent = $("<h3>");
-      $('#percentage').append(percent);
-      $('#percentage').append("Here are the percentages... " + countMeUp.calcPercentage()
-      );
-    };
-
-  // function showRank() {
-  //     var rank = $("<h3>");
-  //     $('#rank').append(rank);
-  //     $('#rank').append("Here is the candidates rank:  <br>" + rankCandidateList()
-  //     );
-  // };
+      $("#percentage").html(percentageToHTML());
+      $("#percentage").prepend("Candidate vote percetage: "); // make sure this works!
+  };
 
   function showRank() {
       $("#rank").html(rankToHTML());
       $("#rank").prepend("Candidate rank: ");
   };
-
-  function rankCandidateList() {
-    countMeUp.rankCandidates()
-    var sorted = [];
-    var array = countMeUp.candidates;
-    for (var i = 0; i < array.length; i++) {
-    sorted.push(array[i].name + ": " + array[i].votes + "</br>");
-   }
-    return sorted;
-  }; // update to output unordered list
 
   function showResults() {
       var winner = $("<h3>");
@@ -58,7 +41,7 @@ $(document).ready(function() {
   function welcomeUser() {
     greet = $("<h3>");
     $("#header").append(greet);
-    $("#header").append("Hi " + user.name); // this refers to the user I instantiate in index.js
+    $("#header").append("Hi " + user.name);
   }
 
   function showCandidate() {
@@ -66,14 +49,17 @@ $(document).ready(function() {
       $("#candidates").prepend("Vote For Candidates Here:");
   };
 
-  function showVoteButton() {
+  function showCandidateVoteButton() {
     var voteBtn = $("<button>");
     $("#candidates li").append(voteBtn);
   }; // target each button to add votes to candidate
 
-  function showVotes() {
-    $('#total-votes').text(countMeUp.totalVotes);
+  function showTotalVotes() {
+    $('#total-votes').html("Total Votes: " + countMeUp.totalVotes);
   }
+
+
+// ↓ These methods convert my objects to html for view
 
   function convertToHTML() {
     var array = countMeUp.candidates;
@@ -94,18 +80,39 @@ $(document).ready(function() {
     return html + "</ul>"
   };
 
+  function percentageToHTML() {
+    var array = countMeUp.calcPercentage();
+    var html = "<ul>";
+    for ( var i = 0; i < array.length; i++ ) {
+      html += `<li>${ array[i] }</li>`;
+    }
+    return html + "</ul>"
+  };
+
 
   // Working on this functionality for voting buttons
 
+
+
+// This seems like it should be working since it does if it's done bit by bit in console. However as one function it doesn't do something right: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)"
     $('#candidates button').click(function() {
         var nameKey = (this).previousSibling;
+        return nameKey;
         console.log(nameKey);
-        var candidateObject = findCandidateObject(nameKey, countMeUp.candidates)
+        var candidateObject = findCandidateObject(nameKey, countMeUp.candidates);
+        return candidateObject;
         console.log(candidateObject);
         user.castVote(candidateObject, countMeUp);
-        showVotes();
+        showTotalVotes();
       });
 
+// just doing a manual test to make sure this doesn't throw error
+    // $('#candidates button').click(function() {
+    //     user.castVote(candidate, countMeUp);
+    //     showTotalVotes();
+    //   });
+
+// this works to extract the previousSibling (candidates name string) of the button clicked to use as a nameKey that my findCandidateObject can use as a search tool to return the candidate object for button clicked
       function nameKey() {
           $('#candidates button').click(function() {
           (this).previousSibling;
@@ -113,13 +120,15 @@ $(document).ready(function() {
           });
       };
 
+
+// takes name string and finds matching candidate object, which can be passed to castVote method and tracked
     function findCandidateObject(nameString, candidateList) {
           for (var i = 0; i < candidateList.length; i++)  {
             if (candidateList[i].name === nameString) {
           return candidateList[i];
         }
       }
-    }; // takes name string and finds matching candidate object, which can be passed to castVote method and tracked
+    };
 
 
 })
