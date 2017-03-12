@@ -1,19 +1,36 @@
-$ node -v
-if node: command not found
-$ brew install node
+As producers of a popular BBC talent show, so that we may avoid a 2017 Oscar Best Picture "moment" we wish to have our presenter accurately announce a winner. We need Count Me Up to receive, validate, distribute, calculate, update and clearly report the votes cast for our candidates.
 
+## Technologies and Setup
+
+Get node.js
+> Backend model layer/business logic
+
+>$ node -v
+
+> if node: command not found
+
+> $ brew install node
+
+Set up server to view project on localhost
 >$ cd root/of/your-project/
-$ npm install http-server --save
-$ node node_modules/http-server/bin/http-server
-clear browsing data/cache if not loading properly
+
+> $ node node_modules/http-server/bin/http-server
+
+>clear data/cache regularly with mystery problems occur or use private browsing
+
+TDD unit testing
+>jasmine javascript testing framework
+run SpecRunner.html in browser of choice to see tests
+
+For feature testing in UI
+>For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery .  
+Add/update candidates, change users, and test calculations of votes prepopulated in browser by updating this file.
 
 
 
 
-## User Stories
-
-> • As producers of a popular BBC talent show, so that we may avoid a 2017 Oscar Best Picture "moment" and have our presenter accurately announce a winner, **we need Count Me Up to be a simple and clear program that receives, validates, distributes, calculates, updates and reports the votes cast for our candidates.**
-
+## All User Stories
+*Bolded text shows where I derived objects and messages from first stage user stories*
 > As a viewer of a BBC popular live talent show...
 So that the candidate of my choice has a chance of winning,
 **I would like to *cast my vote* for a candidate**

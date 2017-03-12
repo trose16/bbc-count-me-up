@@ -1,4 +1,4 @@
-// business logic for the bulk of the project is handled by the Count Me Up 'class'. I worked to keep all methods clear SRP and used dependency injection to keep in line with single responsibility.
+// Business logic for the bulk of the project is handled by the Count Me Up 'class'. I worked to keep all methods clear SRP and used dependency injection to keep in line with single responsibility.
 
 (function(exports) {
 
