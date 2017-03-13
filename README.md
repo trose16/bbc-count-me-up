@@ -24,7 +24,7 @@ TDD unit testing
 >  run SpecRunner.html in browser of choice to see tests
 
 Manual feature testing (jQuery UI/console)
->For this basic MVP I use index.js to instantiate model objects and set the variables pre-loaded in index.html for UI manual testing of jQuery.  Add/update candidates, change users, and test calculations of votes prepopulated in browser by updating this file.
+>For this basic MVP I created a file called index.js to instantiate model objects to test the jQuery UI view layer presented in index.html.  Feel free to add/change candidates, change users, and test calculations of votes by updating this file.
 
 
 
