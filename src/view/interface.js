@@ -105,10 +105,18 @@ $(document).ready(function() {
       return html + "</ul>"
   };
 
+/* Notes on voter buttons: Each candidate has a button rendered by jQuery and added to it's line item.
+On click the button needs to identify its candidate and call the 'user.castVote(candidate, countMeUp)'
+function, which will update the total votes/candidate votes and throw error if user votes more than 3 times.
+Researched A LOT, logic seems sound, yet still not working and would love feedback! */
 
-// Notes on voter buttons: Each candidate has a button rendered by jQuery and added to it's line item. On click the button needs to identify its candidate and call the 'user.castVote(candidate, countMeUp)' function, which will update the total votes/candidate votes and throw error if user votes more than 3 times. Researched A LOT, logic seems sound, yet still not working and would love feedback!
 
-// My solution below was for button to find previousSibling, which returns candidate name string. I then pass that name into a search function 'findCandidateObject(nameString, candidateList)' that will search my array of objects to find the right candidate object to return as an argument for my user.castVote fx (works great!). Each bit/fx works when run in manually repl but getting it to dynamically handle in my callback causes: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)" It seems to be that my castVote method remains undefined and is not getting it's candidate object.
+/* My solution below was for button to find previousSibling, which returns candidate name string.
+I then pass that name into a search function 'findCandidateObject(nameString, candidateList)' that will
+search my array of objects to find the right candidate object to return as an argument for my user.castVote fx
+(works great!). Each bit/fx works when run in manually repl but getting it to dynamically handle in my callback
+causes: "Uncaught TypeError: Cannot read property 'receiveVote' of undefined at User.castVote (user.js:13)"
+It seems to be that my castVote method remains undefined and is not getting it's candidate object. */
 
     // $('#candidates button').click(function() {
     //     var nameKey = (this).previousSibling; // exp " Dante Clark "
