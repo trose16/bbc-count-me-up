@@ -63,13 +63,13 @@ $(document).ready(function() {
   function showCandidate() {
       $("#candidates").html(convertToHTML());
       $("#candidates").prepend("Vote For Candidates Here:");
-  };
+  }; // dynamically adds candidates to ul/li tags
 
   function showCandidateVoteButton() {
       var voteBtn = $("<button>");
       $("#candidates li").append(voteBtn);
       $("#candidates button").html('Vote For Me!');
-  }; // target each button to add votes to candidate
+  }; // target each candidate li to dynamically add a voting button
 
   function showTotalVotes() {
       $('#total-votes').html("Total Votes: " + countMeUp.totalVotes);
