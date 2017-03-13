@@ -58,3 +58,7 @@ So that I may accurately report each candidates score,
 > • As a BBC television presenter
 So that I may accurately report the leading candidate on live TV,
 **I would like to each candidate *score update* at (or close to) real time**
+
+##Troubleshooting
+jQuery UI candidate voting buttons
+>In view/interface.js there are notes regarding my jQuery method to populate votes upon click. I tested the callbacks with a hardcoded function. A dynamic solution was in works and noted at bottom of page.  
