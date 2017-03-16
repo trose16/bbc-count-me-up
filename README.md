@@ -12,11 +12,13 @@ Get node.js
 > $ brew install node
 
 Set up server to view project on localhost
->$ cd root/of/your-project/
+> $ cd root/of/your-project/
+
+> $ npm install http-server --save
 
 > $ node node_modules/http-server/bin/http-server
 
->clear data/cache regularly when mystery problems occur or use private browsing
+> clear data/cache regularly when mystery problems occur or use private browsing
 
 TDD unit testing
 >jasmine javascript testing framework
